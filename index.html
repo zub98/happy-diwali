@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Diwali</title>
+    <style>
+        body {
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            position: relative;
+        }
+        .diwali-text {
+            color: #FFD700;
+            font-size: 4em;
+            text-shadow: 0 0 10px #FFA500;
+            animation: glow 2s ease-in-out infinite;
+        }
+        .diya {
+            font-size: 50px;
+            margin: 20px;
+        }
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px #FFA500; }
+            50% { text-shadow: 0 0 30px #FFA500, 0 0 40px #FF6347; }
+            100% { text-shadow: 0 0 10px #FFA500; }
+        }
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .sparkle {
+            position: absolute;
+            background: #FFD700;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            animation: sparkle 1.5s linear infinite;
+        }
+        @keyframes sparkle {
+            0% { transform: translateY(0) scale(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100px) scale(1); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sparkles" id="sparkles"></div>
+        <div class="diya">🪔</div>
+        <h1 class="diwali-text">Happy Diwali!</h1>
+        <h2 style="color: #FFA500;">May this festival of lights bring joy, prosperity, and happiness to you and your family</h2>
+    </div>
+
+    <script>
+        function createSparkles() {
+            const sparklesContainer = document.getElementById('sparkles');
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparklesContainer.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 1500);
+        }
+
+        setInterval(createSparkles, 100);
+    </script>
+</body>
+</html>
